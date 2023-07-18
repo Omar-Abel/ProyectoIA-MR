@@ -5,6 +5,9 @@ import webbrowser
 import os, sys
 from haversine import haversine
 
+# Codigo tomado de base para el proyecto: https://github.com/shivansh1012/DijkstraOnMaps/blob/main/DijkstraPythonFile.py
+
+
 # Abriendo y leyendo el archivo .OSM
 with open("Maps/santoMini.osm", "rb") as osm_fn:
     map_osm = xtd.parse(osm_fn)["osm"]
@@ -210,9 +213,7 @@ def plot_routes(s, connectivity_matrix):
 
     return nodes_routes_values, p
 
-
 print("Espere un momento, se esta generando el mapa...")
-
 
 # Generar el mapa para mostrar los nodos
 def BuildAllNodesMap():
@@ -239,14 +240,7 @@ def BuildAllNodesMapResponse(SourceNode):
     for i in range(n):
         xy = (node["xy"][i][0], node["xy"][i][1])
         if i != SourceNode:
-            folium.CircleMarker(
-                xy,
-                radius=3,
-                color="purple",
-                fill=True,
-                fill_color="purple",
-                popup=str(i),
-            ).add_to(map_0)
+            folium.CircleMarker(xy, radius = 3, color="purple", fill=True, fill_color="purple", popup=str(i),).add_to(map_0)
         else:
             folium.CircleMarker(
                 xy, radius=9, color="green", fill=True, fill_color="red", popup=str(i)
